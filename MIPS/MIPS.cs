@@ -1,8 +1,21 @@
-﻿namespace MIPS
+﻿using System.Collections.Generic;
+
+namespace MIPS
 {
     public class Mips
     {
-        RegisterFile _registerFile = new RegisterFile();
-        private Alu _alu = new Alu();
+        public Dictionary<uint, string> InstructionMemory { get; set; }
+        public int Clock { get; set; }
+        public int Pc = 1000;
+        public RegisterFile RegisterFile;
+        private Alu _alu;
+
+        public Mips()
+        {
+            Clock = 0;
+            RegisterFile = new RegisterFile();
+            _alu = new Alu();
+            InstructionMemory = new Dictionary<uint, string>();
+        }
     }
 }
