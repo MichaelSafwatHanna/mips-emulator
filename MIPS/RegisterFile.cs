@@ -1,29 +1,28 @@
-﻿using System.Collections.Generic;
-
-namespace MIPS
+﻿namespace MIPS
 {
     public class RegisterFile
     {
-        private List<int> _registers = new List<int>(32);
-        public static int ReadReg1;
-        public static int ReadReg2;
-        public static int WriteReg;
-        public static bool RegWrite;
-        public int ReadData1 => _registers[ReadReg1];
-        public int ReadData2 => _registers[ReadReg2];
+        public int[] Registers = new int[32];
+        public int ReadReg1;
+        public int ReadReg2;
+        public int WriteReg;
+        public int WrData;
+        public bool RegWrite;
+        public int ReadData1 => Registers[ReadReg1];
+        public int ReadData2 => Registers[ReadReg2];
 
         public RegisterFile()
         {
-            for (var i = 1; i < _registers.Count -1; i++)
+            for (var i = 1; i < Registers.Length; i++)
             {
-                _registers[i] = 100 + i;
+                Registers[i] = 100 + i;
             }
         }
 
-        public void WriteData(int data)
+        public void WriteData()
         {
             if (RegWrite)
-                _registers[WriteReg] = data;
+                Registers[WriteReg] = WrData;
         }
     }
 }
