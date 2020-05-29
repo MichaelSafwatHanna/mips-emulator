@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MIPS", "MIPS\MIPS.csproj", "{C46A2708-9053-4561-8C6B-21AE4E315F2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emulator", "Emulator\Emulator.csproj", "{F3B4E00A-53CF-4E3A-83E3-A6165026156D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C46A2708-9053-4561-8C6B-21AE4E315F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C46A2708-9053-4561-8C6B-21AE4E315F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C46A2708-9053-4561-8C6B-21AE4E315F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C46A2708-9053-4561-8C6B-21AE4E315F2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3B4E00A-53CF-4E3A-83E3-A6165026156D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3B4E00A-53CF-4E3A-83E3-A6165026156D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3B4E00A-53CF-4E3A-83E3-A6165026156D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3B4E00A-53CF-4E3A-83E3-A6165026156D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E6CF8D9-B253-4D00-8868-056FB1A0F73C}
+	EndGlobalSection
+EndGlobal
