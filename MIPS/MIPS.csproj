@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alu.cs" />
-    <Compile Include="AluOps.cs" />
     <Compile Include="ControlUnit.cs" />
     <Compile Include="Instruction.cs" />
     <Compile Include="MIPS.cs" />
