@@ -14,12 +14,14 @@ namespace MIPS
         public int Pc = 1000;
         public RegisterFile RegisterFile;
         private Alu _alu;
+        private ControlUnit _controlUnit;
 
         public Mips()
         {
             Clock = 0;
             RegisterFile = new RegisterFile();
             _alu = new Alu();
+            _controlUnit = new ControlUnit();
             InstructionMemory = new Dictionary<uint, string>();
             IfId = new IfId();
             IdEx = new IdEx();

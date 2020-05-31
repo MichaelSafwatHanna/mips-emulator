@@ -20,9 +20,14 @@ namespace MIPS
         public BitArray Rt;
         public BitArray Rd;
         public BitArray Offset;
-        public bool We;
-        public bool M;
-        public bool Ex;
+        public bool RegWrite;
+        public bool MemToReg;
+        public bool Branch;
+        public bool MemRead;
+        public bool MemWrite;
+        public bool RegDest;
+        public BitArray AluOp;
+        public bool AluSrc;
     }
 
     public class ExMem : PipelineRegister
@@ -32,8 +37,11 @@ namespace MIPS
         public int Result;
         public int ReadData2;
         public BitArray RegDest;
-        public bool We;
-        public bool M;
+        public bool RegWrite;
+        public bool MemToReg;
+        public bool Branch;
+        public bool MemRead;
+        public bool MemWrite;
     }
 
     public class MemWb : PipelineRegister
@@ -41,6 +49,7 @@ namespace MIPS
         public int ReadData;
         public int Result;
         public BitArray RegDest;
-        public bool We;
+        public bool RegWrite;
+        public bool MemToReg;
     }
 }
