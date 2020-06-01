@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Linq;
 
@@ -8,7 +8,7 @@ namespace MIPS.util
     {
         public static BitArray StringToBits(string str)
         {
-            return new BitArray(str.Reverse().Select(c => c == '1').ToArray());
+            return new BitArray(str.Select(c => c == '1').ToArray());
         }
 
         public static int BitsToInt(BitArray binary)

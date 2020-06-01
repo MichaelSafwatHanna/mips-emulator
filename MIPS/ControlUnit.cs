@@ -42,9 +42,9 @@ namespace MIPS
             AluOp = new BitArray(3);
             var or1 = function[0] || function[3];
             var and1 = function[1] && _aluOp1;
-            AluOp[2] = or1 && _aluOp1;
+            AluOp[0] = or1 && _aluOp1;
             AluOp[1] = !function[2] || !_aluOp1;
-            AluOp[0] = and1 || _aluOp0;
+            AluOp[2] = and1 || _aluOp0;
         }
 
         public void SetPcSrc(bool zeroFlag)

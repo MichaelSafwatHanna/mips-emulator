@@ -1,4 +1,4 @@
-﻿using MIPS.util;
+using MIPS.util;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -64,9 +64,9 @@ namespace MIPS
             IdEx.Pc = IfId.Pc;
             IdEx.ReadData1 = RegisterFile.ReadData1;
             IdEx.ReadData2 = RegisterFile.ReadData2;
-            IdEx.Rd = instruction.I16_20;
-            IdEx.Rt = instruction.I11_15;
-            IdEx.Offset = instruction.I16_31; //TODO: Sign Extension
+            IdEx.Rd = instruction.I15_11;
+            IdEx.Rt = instruction.I20_16;
+            IdEx.Offset = instruction.I15_0; //TODO: Sign Extension
         }
 
         public void Execute()

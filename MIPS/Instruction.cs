@@ -16,9 +16,9 @@ namespace MIPS
         public BitArray Offset { get; }
 
         // Intervals
-        public BitArray I11_15 { get; }
-        public BitArray I16_20 { get; }
-        public BitArray I16_31 { get; }
+        public BitArray I15_11 { get; }
+        public BitArray I20_16 { get; }
+        public BitArray I15_0 { get; }
 
         // Op Codes
         private const int ROpCode = 0;
@@ -28,35 +28,35 @@ namespace MIPS
 
         public Instruction(string instruction)
         {
-            Opcode = BinaryConverter.StringToBits(instruction.Substring(0, 6));
+            Opcode = BinaryConverter.StringToBits(instruction.Substring(26, 6));
             var opcodeComparer = BinaryConverter.BitsToInt(Opcode);
 
             switch (opcodeComparer)
             {
                 case ROpCode:
                     Type = Format.R;
-                    Rs = BinaryConverter.StringToBits(instruction.Substring(6, 5));
-                    Rt = BinaryConverter.StringToBits(instruction.Substring(11, 5));
-                    Rd = BinaryConverter.StringToBits(instruction.Substring(16, 5));
-                    Shamt = BinaryConverter.StringToBits(instruction.Substring(21, 5));
-                    Function = BinaryConverter.StringToBits(instruction.Substring(26, 6));
+                    Rs = BinaryConverter.StringToBits(instruction.Substring(21, 5));
+                    Rt = BinaryConverter.StringToBits(instruction.Substring(16, 5));
+                    Rd = BinaryConverter.StringToBits(instruction.Substring(11, 5));
+                    Shamt = BinaryConverter.StringToBits(instruction.Substring(6, 5));
+                    Function = BinaryConverter.StringToBits(instruction.Substring(0, 6));
                     break;
                 case JOpCode:
                 case JOpCode2:
                     Type = Format.J;
-                    Offset = BinaryConverter.StringToBits(instruction.Substring(6, 26));
+                    Offset = BinaryConverter.StringToBits(instruction.Substring(0, 26));
                     break;
                 default:
                     Type = Format.I;
-                    Rs = BinaryConverter.StringToBits(instruction.Substring(6, 5));
-                    Rt = BinaryConverter.StringToBits(instruction.Substring(11, 5));
-                    Offset = BinaryConverter.StringToBits(instruction.Substring(16, 16));
+                    Rs = BinaryConverter.StringToBits(instruction.Substring(21, 5));
+                    Rt = BinaryConverter.StringToBits(instruction.Substring(16, 5));
+                    Offset = BinaryConverter.StringToBits(instruction.Substring(0, 16));
                     break;
             }
 
-            I11_15 = BinaryConverter.StringToBits(instruction.Substring(11, 5));
-            I16_20 = BinaryConverter.StringToBits(instruction.Substring(16, 5));
-            I16_31 = BinaryConverter.StringToBits(instruction.Substring(16, 16));
+            I15_11 = BinaryConverter.StringToBits(instruction.Substring(11, 5));
+            I20_16 = BinaryConverter.StringToBits(instruction.Substring(16, 5));
+            I15_0 = BinaryConverter.StringToBits(instruction.Substring(0, 16));
         }
     }
 

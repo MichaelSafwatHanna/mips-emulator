@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using MIPS;
 
 namespace Emulator
@@ -38,7 +38,9 @@ namespace Emulator
             foreach (var inst in instSplit)
             {
                 entry = inst.Split(':');
-                _cpu.InstructionMemory.Add(uint.Parse(entry[0]), entry[1]);
+                var instructionCharArray = entry[1].ToCharArray();
+                Array.Reverse(instructionCharArray);
+                _cpu.InstructionMemory.Add(uint.Parse(entry[0]), new string(instructionCharArray));
             }
 
             var lastAddress = uint.Parse(entry[0]);
