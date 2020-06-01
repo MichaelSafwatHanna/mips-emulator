@@ -74,11 +74,6 @@ namespace MIPS
             _alu.Data1 = IdEx.ReadData1;
             _alu.Data2 = IdEx.AluSrc ? BinaryConverter.BitsToInt(IdEx.Offset) : IdEx.ReadData2;
             _alu.Compute(IdEx.AluOp);
-            var shl2 = new BitArray(16);
-            for (var i = 0; i < IdEx.Offset.Length; i++)
-            {
-                shl2[i] = IdEx.Offset[i];
-            }
 
             // Memory access Stage control lines
             ExMem.Branch = IdEx.Branch;
@@ -89,7 +84,7 @@ namespace MIPS
             ExMem.RegWrite = IdEx.RegWrite;
             ExMem.MemToReg = IdEx.MemToReg;
 
-            ExMem.PcJump = IdEx.Pc + (uint)BinaryConverter.BitsToInt(shl2);
+            ExMem.PcJump = IdEx.Pc + (uint)BinaryConverter.BitsToInt(BitwiseOperations.LogicalShl(IdEx.Offset, 2));
             ExMem.ZeroFlag = _alu.ZeroFlag;
             ExMem.Result = _alu.Result;
             ExMem.ReadData2 = IdEx.ReadData2;
