@@ -25,6 +25,7 @@ namespace MIPS
             _alu = new Alu();
             _controlUnit = new ControlUnit();
             InstructionMemory = new Dictionary<uint, string>();
+            DataMemory = new Dictionary<uint, string>();
             IfId = new IfId();
             IdEx = new IdEx();
             ExMem = new ExMem();
@@ -97,9 +98,12 @@ namespace MIPS
 
             if (ExMem.MemRead)
             {
-                MemWb.ReadData = DataMemory.ContainsKey((uint)ExMem.Result)
-                    ? int.Parse(DataMemory[(uint)ExMem.Result])
-                    : 99;
+                if (!DataMemory.ContainsKey((uint)ExMem.Result))
+                {
+                    DataMemory[(uint)ExMem.Result] = "99";
+            }
+
+                MemWb.ReadData = int.Parse(DataMemory[(uint)ExMem.Result]);
             }
 
             if (ExMem.MemWrite)
@@ -119,6 +123,7 @@ namespace MIPS
         {
             RegisterFile.WriteReg = BinaryConverter.BitsToInt(MemWb.RegDest);
             RegisterFile.WrData = MemWb.MemToReg ? MemWb.ReadData : MemWb.Result;
+            RegisterFile.RegWrite = MemWb.RegWrite;
             RegisterFile.WriteData();
         }
     }

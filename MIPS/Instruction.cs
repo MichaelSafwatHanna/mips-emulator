@@ -12,7 +12,7 @@ namespace MIPS
         public BitArray Rt { get; }
         public BitArray Rd { get; }
         public BitArray Shamt { get; }
-        public BitArray Function { get; }
+        public BitArray Function { get; } = new BitArray(6);
         public BitArray Offset { get; }
 
         // Intervals
