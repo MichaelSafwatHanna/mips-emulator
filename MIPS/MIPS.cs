@@ -1,5 +1,4 @@
-using MIPS.util;
-using System.Collections;
+﻿using MIPS.util;
 using System.Collections.Generic;
 
 namespace MIPS
@@ -42,6 +41,8 @@ namespace MIPS
 
         public void Decode()
         {
+            if (IfId.Instruction == null)
+                return;
             var instruction = new Instruction(IfId.Instruction);
             RegisterFile.ReadReg1 = BinaryConverter.BitsToInt(instruction.Rs);
             RegisterFile.ReadReg2 = BinaryConverter.BitsToInt(instruction.Rt);
@@ -101,7 +102,7 @@ namespace MIPS
                 if (!DataMemory.ContainsKey((uint)ExMem.Result))
                 {
                     DataMemory[(uint)ExMem.Result] = "99";
-            }
+                }
 
                 MemWb.ReadData = int.Parse(DataMemory[(uint)ExMem.Result]);
             }
@@ -126,5 +127,16 @@ namespace MIPS
             RegisterFile.RegWrite = MemWb.RegWrite;
             RegisterFile.WriteData();
         }
+
+        public void RunClockCycle()
+        {
+            WriteBack();
+            MemoryAccess();
+            Execute();
+            Decode();
+            Fetch();
+            Clock++;
+        }
+
     }
 }

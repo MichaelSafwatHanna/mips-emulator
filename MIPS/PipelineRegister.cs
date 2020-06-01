@@ -17,16 +17,16 @@ namespace MIPS
         public uint Pc;
         public int ReadData1;
         public int ReadData2;
-        public BitArray Rt;
-        public BitArray Rd;
-        public BitArray Offset;
+        public BitArray Rt = new BitArray(5);
+        public BitArray Rd = new BitArray(5);
+        public BitArray Offset = new BitArray(5);
         public bool RegWrite;
         public bool MemToReg;
         public bool Branch;
         public bool MemRead;
         public bool MemWrite;
         public bool RegDest;
-        public BitArray AluOp;
+        public BitArray AluOp = new BitArray(5);
         public bool AluSrc;
     }
 
@@ -36,7 +36,7 @@ namespace MIPS
         public bool ZeroFlag;
         public int Result;
         public int ReadData2;
-        public BitArray RegDest;
+        public BitArray RegDest = new BitArray(5);
         public bool RegWrite;
         public bool MemToReg;
         public bool Branch;
@@ -48,7 +48,7 @@ namespace MIPS
     {
         public int ReadData;
         public int Result;
-        public BitArray RegDest;
+        public BitArray RegDest = new BitArray(5);
         public bool RegWrite;
         public bool MemToReg;
     }
