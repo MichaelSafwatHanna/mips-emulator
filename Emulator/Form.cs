@@ -1,4 +1,4 @@
-﻿using MIPS;
+using MIPS;
 using System;
 using System.Windows.Forms;
 
@@ -37,33 +37,13 @@ namespace Emulator
 
             if (_cpu.Clock == 0)
             {
-                PopulateInstructionMemory(userCode_textbox.Text);
+                _cpu.LoadCode(userCode_textbox.Text);
             }
 
             _cpu.RunClockCycle();
             RefreshRegistersGridView();
             RefreshDataMemoryGridView();
             RefreshPipelineRegisterGridView();
-        }
-
-        private void PopulateInstructionMemory(string instructions)
-        {
-            var instSplit = instructions.Replace(" ", "").Replace("\r", "").Split();
-            var entry = new string[] { };
-            foreach (var inst in instSplit)
-            {
-                entry = inst.Split(':');
-                var instructionCharArray = entry[1].ToCharArray();
-                Array.Reverse(instructionCharArray);
-                _cpu.InstructionMemory.Add(uint.Parse(entry[0]), new string(instructionCharArray));
-            }
-
-            var lastAddress = uint.Parse(entry[0]);
-            for (var i = 0; i < 4; i++)
-            {
-                lastAddress += 4;
-                _cpu.InstructionMemory.Add(lastAddress, new string('0', 32));
-            }
         }
 
         private void RefreshRegistersGridView()

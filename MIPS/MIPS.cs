@@ -1,4 +1,5 @@
-﻿using MIPS.util;
+using System;
+using MIPS.util;
 using System.Collections.Generic;
 
 namespace MIPS
@@ -30,6 +31,26 @@ namespace MIPS
             ExMem = new ExMem();
             MemWb = new MemWb();
             Pc = pc - 4;
+        }
+
+        public void LoadCode(string code)
+        {
+            var instSplit = code.Replace(" ", "").Replace("\r", "").Split();
+            var entry = new string[] { };
+            foreach (var inst in instSplit)
+            {
+                entry = inst.Split(':');
+                var instructionCharArray = entry[1].ToCharArray();
+                Array.Reverse(instructionCharArray);
+                InstructionMemory.Add(uint.Parse(entry[0]), new string(instructionCharArray));
+            }
+
+            var lastAddress = uint.Parse(entry[0]);
+            for (var i = 0; i < 4; i++)
+            {
+                lastAddress += 4;
+                InstructionMemory.Add(lastAddress, new string('0', 32));
+            }
         }
 
         public void Fetch()
