@@ -38,12 +38,17 @@
             this.RunClockCycle_button = new System.Windows.Forms.Button();
             this.dataMemory_dataGridView = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pipelineRegisters_dataGirdView = new System.Windows.Forms.DataGridView();
             this.register = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pipline_register = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pipelineRegisterValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mipsRegisters_datagridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataMemory_dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipelineRegisters_dataGirdView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -60,13 +65,13 @@
             this.userCode_textbox.Location = new System.Drawing.Point(16, 46);
             this.userCode_textbox.Multiline = true;
             this.userCode_textbox.Name = "userCode_textbox";
-            this.userCode_textbox.Size = new System.Drawing.Size(386, 383);
+            this.userCode_textbox.Size = new System.Drawing.Size(343, 388);
             this.userCode_textbox.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(424, 25);
+            this.label2.Location = new System.Drawing.Point(383, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 17);
             this.label2.TabIndex = 2;
@@ -83,17 +88,17 @@
             this.mipsRegisters_datagridview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.register,
             this.value});
-            this.mipsRegisters_datagridview.Location = new System.Drawing.Point(427, 46);
+            this.mipsRegisters_datagridview.Location = new System.Drawing.Point(386, 46);
             this.mipsRegisters_datagridview.Name = "mipsRegisters_datagridview";
             this.mipsRegisters_datagridview.ReadOnly = true;
             this.mipsRegisters_datagridview.RowHeadersVisible = false;
             this.mipsRegisters_datagridview.RowTemplate.Height = 24;
-            this.mipsRegisters_datagridview.Size = new System.Drawing.Size(201, 383);
+            this.mipsRegisters_datagridview.Size = new System.Drawing.Size(201, 388);
             this.mipsRegisters_datagridview.TabIndex = 3;
             // 
             // pc_textbox
             // 
-            this.pc_textbox.Location = new System.Drawing.Point(54, 472);
+            this.pc_textbox.Location = new System.Drawing.Point(45, 466);
             this.pc_textbox.Name = "pc_textbox";
             this.pc_textbox.Size = new System.Drawing.Size(100, 22);
             this.pc_textbox.TabIndex = 4;
@@ -101,7 +106,7 @@
             // PC
             // 
             this.PC.AutoSize = true;
-            this.PC.Location = new System.Drawing.Point(16, 475);
+            this.PC.Location = new System.Drawing.Point(13, 469);
             this.PC.Name = "PC";
             this.PC.Size = new System.Drawing.Size(26, 17);
             this.PC.TabIndex = 5;
@@ -109,7 +114,7 @@
             // 
             // init_button
             // 
-            this.init_button.Location = new System.Drawing.Point(176, 465);
+            this.init_button.Location = new System.Drawing.Point(179, 459);
             this.init_button.Name = "init_button";
             this.init_button.Size = new System.Drawing.Size(87, 36);
             this.init_button.TabIndex = 6;
@@ -119,7 +124,7 @@
             // 
             // RunClockCycle_button
             // 
-            this.RunClockCycle_button.Location = new System.Drawing.Point(291, 465);
+            this.RunClockCycle_button.Location = new System.Drawing.Point(300, 459);
             this.RunClockCycle_button.Name = "RunClockCycle_button";
             this.RunClockCycle_button.Size = new System.Drawing.Size(102, 36);
             this.RunClockCycle_button.TabIndex = 7;
@@ -137,60 +142,98 @@
             this.dataMemory_dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.address,
             this.dataValue});
-            this.dataMemory_dataGridView.Location = new System.Drawing.Point(657, 46);
+            this.dataMemory_dataGridView.Location = new System.Drawing.Point(1106, 46);
             this.dataMemory_dataGridView.Name = "dataMemory_dataGridView";
             this.dataMemory_dataGridView.ReadOnly = true;
             this.dataMemory_dataGridView.RowHeadersVisible = false;
             this.dataMemory_dataGridView.RowTemplate.Height = 24;
-            this.dataMemory_dataGridView.Size = new System.Drawing.Size(180, 383);
+            this.dataMemory_dataGridView.Size = new System.Drawing.Size(180, 388);
             this.dataMemory_dataGridView.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(654, 25);
+            this.label3.Location = new System.Drawing.Point(1103, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 17);
             this.label3.TabIndex = 9;
             this.label3.Text = "Data Memory";
             // 
-            // address
+            // label4
             // 
-            this.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.address.HeaderText = "Address";
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            this.address.Width = 89;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(611, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(122, 17);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Pipeline Registers";
             // 
-            // dataValue
+            // pipelineRegisters_dataGirdView
             // 
-            this.dataValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataValue.HeaderText = "Value";
-            this.dataValue.Name = "dataValue";
-            this.dataValue.ReadOnly = true;
-            this.dataValue.Width = 73;
+            this.pipelineRegisters_dataGirdView.AllowUserToAddRows = false;
+            this.pipelineRegisters_dataGirdView.AllowUserToDeleteRows = false;
+            this.pipelineRegisters_dataGirdView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.pipelineRegisters_dataGirdView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.pipline_register,
+            this.pipelineRegisterValue});
+            this.pipelineRegisters_dataGirdView.Location = new System.Drawing.Point(614, 46);
+            this.pipelineRegisters_dataGirdView.Name = "pipelineRegisters_dataGirdView";
+            this.pipelineRegisters_dataGirdView.ReadOnly = true;
+            this.pipelineRegisters_dataGirdView.RowHeadersVisible = false;
+            this.pipelineRegisters_dataGirdView.RowTemplate.Height = 24;
+            this.pipelineRegisters_dataGirdView.Size = new System.Drawing.Size(465, 388);
+            this.pipelineRegisters_dataGirdView.TabIndex = 11;
             // 
             // register
             // 
-            this.register.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.register.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.register.HeaderText = "Register";
             this.register.Name = "register";
             this.register.ReadOnly = true;
-            this.register.Width = 90;
             // 
             // value
             // 
-            this.value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.value.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.value.HeaderText = "Value";
             this.value.Name = "value";
             this.value.ReadOnly = true;
-            this.value.Width = 73;
+            // 
+            // address
+            // 
+            this.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.address.HeaderText = "Address";
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // dataValue
+            // 
+            this.dataValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataValue.HeaderText = "Value";
+            this.dataValue.Name = "dataValue";
+            this.dataValue.ReadOnly = true;
+            // 
+            // pipline_register
+            // 
+            this.pipline_register.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.pipline_register.FillWeight = 60F;
+            this.pipline_register.HeaderText = "Register";
+            this.pipline_register.Name = "pipline_register";
+            this.pipline_register.ReadOnly = true;
+            // 
+            // pipelineRegisterValue
+            // 
+            this.pipelineRegisterValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.pipelineRegisterValue.HeaderText = "Value";
+            this.pipelineRegisterValue.Name = "pipelineRegisterValue";
+            this.pipelineRegisterValue.ReadOnly = true;
             // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1081, 519);
+            this.ClientSize = new System.Drawing.Size(1308, 519);
+            this.Controls.Add(this.pipelineRegisters_dataGirdView);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataMemory_dataGridView);
             this.Controls.Add(this.RunClockCycle_button);
@@ -205,6 +248,7 @@
             this.Text = "MIPS Emulator";
             ((System.ComponentModel.ISupportInitialize)(this.mipsRegisters_datagridview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataMemory_dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pipelineRegisters_dataGirdView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,10 +266,14 @@
         private System.Windows.Forms.Button RunClockCycle_button;
         private System.Windows.Forms.DataGridView dataMemory_dataGridView;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView pipelineRegisters_dataGirdView;
         private System.Windows.Forms.DataGridViewTextBoxColumn register;
         private System.Windows.Forms.DataGridViewTextBoxColumn value;
         private System.Windows.Forms.DataGridViewTextBoxColumn address;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pipline_register;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pipelineRegisterValue;
     }
 }
 

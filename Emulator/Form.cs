@@ -43,6 +43,7 @@ namespace Emulator
             _cpu.RunClockCycle();
             RefreshRegistersGridView();
             RefreshDataMemoryGridView();
+            RefreshPipelineRegisterGridView();
         }
 
         private void PopulateInstructionMemory(string instructions)
@@ -80,6 +81,30 @@ namespace Emulator
             foreach (var pair in _cpu.DataMemory)
             {
                 dataMemory_dataGridView.Rows.Add(pair.Key, pair.Value);
+            }
+        }
+
+        private void RefreshPipelineRegisterGridView()
+        {
+            pipelineRegisters_dataGirdView.Rows.Clear();
+            foreach (var pair in _cpu.IfId.Map())
+            {
+                pipelineRegisters_dataGirdView.Rows.Add($"IF/ID -> {pair.Key}", pair.Value);
+            }
+
+            foreach (var pair in _cpu.IdEx.Map())
+            {
+                pipelineRegisters_dataGirdView.Rows.Add($"ID/EX -> {pair.Key}", pair.Value);
+            }
+
+            foreach (var pair in _cpu.ExMem.Map())
+            {
+                pipelineRegisters_dataGirdView.Rows.Add($"EX/MEM -> {pair.Key}", pair.Value);
+            }
+
+            foreach (var pair in _cpu.MemWb.Map())
+            {
+                pipelineRegisters_dataGirdView.Rows.Add($"MEM/WB -> {pair.Key}", pair.Value);
             }
         }
     }
