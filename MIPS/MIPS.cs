@@ -1,6 +1,7 @@
 ﻿using System;
 using MIPS.util;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace MIPS
 {
@@ -36,7 +37,8 @@ namespace MIPS
 
         public void LoadCode(string code)
         {
-            var instSplit = code.Replace(" ", "").Replace("\r", "").Split();
+            var rgx = new Regex("[^0-9:\\n]");
+            var instSplit = rgx.Replace(code, "").Split();
             var entry = new string[] { };
             foreach (var inst in instSplit)
             {
