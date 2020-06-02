@@ -94,7 +94,7 @@ namespace MIPS
             IdEx.ReadData2 = RegisterFile.ReadData2;
             IdEx.Rd = instruction.I15_11;
             IdEx.Rt = instruction.I20_16;
-            IdEx.Offset = instruction.I15_0; //TODO: Sign Extension
+            IdEx.Offset = BitwiseOperations.ExtendSign(instruction.I15_0);
         }
 
         public void Execute()
