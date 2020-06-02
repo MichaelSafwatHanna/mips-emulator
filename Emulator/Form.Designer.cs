@@ -124,6 +124,7 @@
             // 
             // RunClockCycle_button
             // 
+            this.RunClockCycle_button.Enabled = false;
             this.RunClockCycle_button.Location = new System.Drawing.Point(300, 459);
             this.RunClockCycle_button.Name = "RunClockCycle_button";
             this.RunClockCycle_button.Size = new System.Drawing.Size(102, 36);

@@ -1,4 +1,4 @@
-using MIPS;
+﻿using MIPS;
 using System;
 using System.Windows.Forms;
 
@@ -18,7 +18,10 @@ namespace Emulator
             pc_textbox.Text = "1000";
             _cpu = new Mips(uint.Parse(pc_textbox.Text));
             RefreshRegistersGridView();
+            RefreshDataMemoryGridView();
+            RefreshPipelineRegisterGridView();
             userCode_textbox.Text = $@"{pc_textbox.Text}: ";
+            RunClockCycle_button.Enabled = true;
         }
 
         private void RunClockCycle_button_Click(object sender, EventArgs e)
@@ -32,6 +35,13 @@ namespace Emulator
             if (userCode_textbox.Text == "")
             {
                 MessageBox.Show("Can't Run Emulator while user code is empty!");
+                return;
+            }
+
+            if (_cpu.Clock == _cpu.InstructionsCount + 4)
+            {
+                MessageBox.Show("End of user code, Initialize emulator to continue!");
+                RunClockCycle_button.Enabled = false;
                 return;
             }
 

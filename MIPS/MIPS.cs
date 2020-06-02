@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using MIPS.util;
 using System.Collections.Generic;
 
@@ -13,6 +13,7 @@ namespace MIPS
         public ExMem ExMem { get; set; }
         public MemWb MemWb { get; set; }
         public int Clock { get; set; }
+        public int InstructionsCount { get; set; }
         public uint Pc = 1000;
         public RegisterFile RegisterFile;
         private Alu _alu;
@@ -51,6 +52,8 @@ namespace MIPS
                 lastAddress += 4;
                 InstructionMemory.Add(lastAddress, new string('0', 32));
             }
+
+            InstructionsCount = instSplit.Length;
         }
 
         public void Fetch()
