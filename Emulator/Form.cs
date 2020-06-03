@@ -15,7 +15,11 @@ namespace Emulator
 
         private void Init_button_Click(object sender, EventArgs e)
         {
-            pc_textbox.Text = "1000";
+            if (pc_textbox.Text == "")
+            {
+                pc_textbox.Text = "1000";
+            }
+
             _cpu = new Mips(uint.Parse(pc_textbox.Text));
             RefreshRegistersGridView();
             RefreshDataMemoryGridView();
